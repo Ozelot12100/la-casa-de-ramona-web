@@ -1,0 +1,92 @@
+---
+import { MessageCircle, Star } from "lucide-react";
+---
+
+<section
+    class="relative h-[85vh] w-full flex items-center justify-center overflow-hidden"
+>
+    <div class="absolute inset-0 z-0">
+        <img
+            src="/images/hero-fachada.jpg"
+            alt="La Casa de Ramona Fachada"
+            class="w-full h-full object-cover brightness-[0.60]"
+        />
+    </div>
+
+    <div
+        class="relative z-10 text-center text-white px-4 mt-10 max-w-5xl mx-auto"
+    >
+        <div
+            class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-yellow-400 font-bold text-sm uppercase tracking-wider mb-6 animate-fade-in-up"
+        >
+            <Star size={16} fill="currentColor" />
+            <span>Guest Favorite • Top 10% on Airbnb</span>
+        </div>
+
+        <h1
+            class="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl leading-tight"
+        >
+            Your Private Oasis <br /> in the Heart of Peñasco
+        </h1>
+
+        <p
+            class="text-lg md:text-2xl mb-10 max-w-3xl mx-auto font-light text-blue-50 drop-shadow-md"
+        >
+            Private Pool 24/7. Huge Parking for RVs & Boats. <br
+                class="hidden md:block"
+            />
+            Space for 16+ guests, strictly secured and fully equipped.
+        </p>
+
+        <div
+            class="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+            <a
+                href="#contact"
+                class="w-full sm:w-auto bg-yellow-500 text-blue-950 px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-400 transition shadow-lg hover:scale-105 transform duration-200"
+            >
+                Check Availability
+            </a>
+            <a
+                href="https://www.airbnb.mx/rooms/42641671"
+                target="_blank"
+                class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/20 backdrop-blur-sm border border-white/50 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/30 transition"
+            >
+                View on Airbnb
+            </a>
+        </div>
+    </div>
+
+    <div
+        class="absolute bottom-0 w-full bg-gradient-to-t from-slate-900/90 to-transparent pt-20 pb-8 z-10"
+    >
+        <div
+            class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-8 md:gap-16 text-white/90"
+        >
+            <div class="text-center">
+                <span class="block text-2xl font-bold">16+</span>
+                <span class="text-xs uppercase tracking-widest opacity-80"
+                    >Guests</span
+                >
+            </div>
+            <div class="text-center">
+                <span class="block text-2xl font-bold">4</span>
+                <span class="text-xs uppercase tracking-widest opacity-80"
+                    >Bedrooms</span
+                >
+            </div>
+            <div class="text-center">
+                <span class="block text-2xl font-bold">1,250m²</span>
+                <span class="text-xs uppercase tracking-widest opacity-80"
+                    >Property</span
+                >
+            </div>
+            <div class="text-center">
+                <span class="block text-2xl font-bold">5 min</span>
+                <span class="text-xs uppercase tracking-widest opacity-80"
+                    >To Beach</span
+                >
+            </div>
+        </div>
+    </div>
+</section>

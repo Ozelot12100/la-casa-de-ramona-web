@@ -1,0 +1,79 @@
+---
+import { Facebook, Instagram, Mail, MapPin } from "lucide-react";
+---
+
+<footer
+    class="bg-slate-900 text-slate-300 py-16 px-6 border-t border-slate-800"
+>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div>
+            <h3 class="text-white font-bold text-2xl mb-4">
+                La Casa de Ramona
+            </h3>
+            <p class="text-slate-400 mb-6 leading-relaxed">
+                Your authentic Mexican getaway. Experience privacy, security,
+                and comfort in the heart of Puerto Peñasco.
+            </p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white transition"
+                    ><Facebook size={24} /></a
+                >
+                <a href="#" class="hover:text-white transition"
+                    ><Instagram size={24} /></a
+                >
+            </div>
+        </div>
+
+        <div>
+            <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
+            <ul class="space-y-3">
+                <li>
+                    <a href="#house" class="hover:text-blue-400 transition"
+                        >The House Layout</a>
+                </li>
+                <li>
+                    <a href="#amenities" class="hover:text-blue-400 transition"
+                        >Amenities</a>
+                </li>
+                <li>
+                    <a
+                        href="https://www.airbnb.mx/rooms/42641671"
+                        target="_blank"
+                        class="hover:text-blue-400 transition"
+                        >Airbnb Listing</a>
+                </li>
+                <li>
+                    <a href="#contact" class="hover:text-blue-400 transition"
+                        >Contact Us</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="contact">
+            <h4 class="text-white font-bold text-lg mb-4">Contact Info</h4>
+            <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                    <MapPin class="text-blue-500 mt-1" size={20} />
+                    <span>
+                        Rodolfo Campodónico & Callejón Sonora<br />
+                        Puerto Peñasco, Sonora, México.
+                    </span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <Mail class="text-blue-500" size={20} />
+                    <a
+                        href="mailto:info@lacasaderamona.com"
+                        class="hover:text-white transition"
+                        >info@lacasaderamona.com</a
+                    >
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div
+        class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-800 text-center text-sm text-slate-500"
+    >
+        © {new Date().getFullYear()} La Casa de Ramona. All rights reserved.
+    </div>
+</footer>

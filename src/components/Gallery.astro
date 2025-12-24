@@ -1,0 +1,105 @@
+---
+import { Image } from "lucide-react";
+---
+
+<section id="gallery" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div
+            class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4"
+        >
+            <div>
+                <span
+                    class="text-blue-600 font-bold uppercase tracking-wider text-sm"
+                    >Visual Tour</span
+                >
+                <h2 class="text-4xl font-bold text-slate-900 mt-2">
+                    See Inside La Casa de Ramona
+                </h2>
+            </div>
+            <a
+                href="https://www.airbnb.mx/rooms/42641671"
+                target="_blank"
+                class="flex items-center gap-2 text-slate-600 font-medium hover:text-blue-600 transition"
+            >
+                <Image size={20} /> View all photos on Airbnb
+            </a>
+        </div>
+
+        <div
+            class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-[1200px] md:h-[600px]"
+        >
+            <div
+                class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-2xl cursor-pointer shadow-lg"
+            >
+                <img
+                    src="/images/galeria-patio-asador.jpg"
+                    alt="Private Pool Area and BBQ"
+                    class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6"
+                >
+                    <p class="text-white font-bold text-lg">
+                        Private Pool & Patio
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="relative group overflow-hidden rounded-2xl cursor-pointer shadow-md"
+            >
+                <img
+                    src="/images/interior-sala-tv.jpg"
+                    alt="Spacious Living Room"
+                    class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div
+                    class="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/20 transition duration-300"
+                >
+                </div>
+            </div>
+
+            <div
+                class="relative group overflow-hidden rounded-2xl cursor-pointer shadow-md"
+            >
+                <img
+                    src="/images/interior-cocina-equipada.jpg"
+                    alt="Chef's Kitchen"
+                    class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div
+                    class="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/20 transition duration-300"
+                >
+                </div>
+            </div>
+
+            <div
+                class="relative group overflow-hidden rounded-2xl cursor-pointer shadow-md"
+            >
+                <img
+                    src="/images/recamara-master-king.jpg"
+                    alt="Master Bedroom King Size"
+                    class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div
+                    class="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/20 transition duration-300"
+                >
+                </div>
+            </div>
+
+            <div
+                class="relative group overflow-hidden rounded-2xl cursor-pointer shadow-md"
+            >
+                <img
+                    src="/images/exterior-estacionamiento-seguro.jpg"
+                    alt="Secure Parking and Facade"
+                    class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div
+                    class="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/20 transition duration-300"
+                >
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

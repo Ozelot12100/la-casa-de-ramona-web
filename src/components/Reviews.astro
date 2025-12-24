@@ -1,0 +1,99 @@
+---
+import { Star, Quote } from "lucide-react";
+
+// Aquí simulamos las reseñas. Luego puedes copiar y pegar las reales de Airbnb.
+const reviews = [
+    {
+        name: "Sarah Jenkins",
+        location: "Phoenix, AZ",
+        date: "November 2024",
+        text: "This house was absolutely perfect for our family reunion! The pool was clean and warm, and the kids loved it. We felt super secure with the gated parking for our trucks. Ramona was an excellent host.",
+        rating: 5,
+    },
+    {
+        name: "Michael Torres",
+        location: "Tucson, AZ",
+        date: "October 2024",
+        text: "The best place to stay in Rocky Point for large groups. Plenty of beds, A/C worked great (which is rare), and the kitchen had everything we needed. The location is super close to the Malecon.",
+        rating: 5,
+    },
+    {
+        name: "Jessica & Tom",
+        location: "California",
+        date: "September 2024",
+        text: "We brought our ATVs and the parking situation was a dream. The house is huge and spotless. We loved the breakfast on the first day, such a nice touch! Will definitely book again.",
+        rating: 5,
+    },
+];
+---
+
+<section id="reviews" class="py-24 bg-blue-900 relative overflow-hidden">
+    <div
+        class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <Star class="text-yellow-400 fill-yellow-400" size={32} />
+                <Star class="text-yellow-400 fill-yellow-400" size={32} />
+                <Star class="text-yellow-400 fill-yellow-400" size={32} />
+                <Star class="text-yellow-400 fill-yellow-400" size={32} />
+                <Star class="text-yellow-400 fill-yellow-400" size={32} />
+            </div>
+            <h2 class="text-4xl font-bold text-white mb-4">Guest Favorite</h2>
+            <p class="text-blue-200 text-lg max-w-2xl mx-auto">
+                Rated <span class="font-bold text-white">4.99/5 stars</span> on Airbnb
+                based on 100+ reviews. Here is what our guests are saying.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {
+                reviews.map((review) => (
+                    <div class="bg-white p-8 rounded-2xl shadow-xl relative transform hover:-translate-y-2 transition duration-300">
+                        <Quote
+                            class="absolute top-6 right-6 text-blue-100"
+                            size={48}
+                        />
+
+                        <div class="flex items-center gap-1 mb-4 text-yellow-500">
+                            {[...Array(review.rating)].map(() => (
+                                <Star size={18} fill="currentColor" />
+                            ))}
+                        </div>
+
+                        <p class="text-slate-600 mb-6 italic leading-relaxed">
+                            "{review.text}"
+                        </p>
+
+                        <div class="flex items-center gap-4 mt-auto border-t border-slate-100 pt-4">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">
+                                {review.name.charAt(0)}
+                            </div>
+                            <div>
+                                <div class="font-bold text-slate-900 text-sm">
+                                    {review.name}
+                                </div>
+                                <div class="text-slate-400 text-xs">
+                                    {review.location} • {review.date}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="text-center mt-12">
+            <a
+                href="https://www.airbnb.mx/rooms/42641671"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-white border-b border-white/30 pb-1 hover:text-yellow-400 hover:border-yellow-400 transition"
+            >
+                Read all 100+ reviews on Airbnb →
+            </a>
+        </div>
+    </div>
+</section>
