@@ -1,5 +1,41 @@
 ---
 import { MessageCircle, Star } from "lucide-react";
+
+interface Props {
+    lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props;
+
+// Traducciones
+const content = {
+    en: {
+        badge: "Guest Favorite • Top 10% on Airbnb",
+        title: "Your Private Oasis <br/> in the Heart of Peñasco",
+        subtitle:
+            "Private Pool 24/7. Huge Parking for RVs & Boats. <br class='hidden md:block'/> Space for 16+ guests, strictly secured and fully equipped.",
+        ctaPrimary: "Check Availability",
+        ctaSecondary: "View on Airbnb",
+        guests: "Guests",
+        bedrooms: "Bedrooms",
+        property: "Property",
+        beach: "To Beach",
+    },
+    es: {
+        badge: "Favorito de Huéspedes • Top 10% en Airbnb",
+        title: "Tu Oasis Privado <br/> en el Corazón de Peñasco",
+        subtitle:
+            "Alberca Privada 24/7. Gran estacionamiento para RZRs y Botes. <br class='hidden md:block'/> Espacio para 16+ personas, seguridad total y equipamiento de lujo.",
+        ctaPrimary: "Ver Disponibilidad",
+        ctaSecondary: "Ver en Airbnb",
+        guests: "Huéspedes",
+        bedrooms: "Habitaciones",
+        property: "Propiedad",
+        beach: "A la Playa",
+    },
+};
+
+const t = content[lang];
 ---
 
 <section
@@ -8,7 +44,7 @@ import { MessageCircle, Star } from "lucide-react";
     <div class="absolute inset-0 z-0">
         <img
             src="/images/hero-fachada.jpg"
-            alt="La Casa de Ramona Fachada"
+            alt="La Casa de Ramona Pool Area and Facade"
             class="w-full h-full object-cover brightness-[0.60]"
         />
     </div>
@@ -20,23 +56,18 @@ import { MessageCircle, Star } from "lucide-react";
             class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-yellow-400 font-bold text-sm uppercase tracking-wider mb-6 animate-fade-in-up"
         >
             <Star size={16} fill="currentColor" />
-            <span>Guest Favorite • Top 10% on Airbnb</span>
+            <span>{t.badge}</span>
         </div>
 
         <h1
             class="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl leading-tight"
-        >
-            Your Private Oasis <br /> in the Heart of Peñasco
-        </h1>
+            set:html={t.title}
+        />
 
         <p
             class="text-lg md:text-2xl mb-10 max-w-3xl mx-auto font-light text-blue-50 drop-shadow-md"
-        >
-            Private Pool 24/7. Huge Parking for RVs & Boats. <br
-                class="hidden md:block"
-            />
-            Space for 16+ guests, strictly secured and fully equipped.
-        </p>
+            set:html={t.subtitle}
+        />
 
         <div
             class="flex flex-col sm:flex-row gap-4 justify-center items-center"
@@ -45,14 +76,14 @@ import { MessageCircle, Star } from "lucide-react";
                 href="#contact"
                 class="w-full sm:w-auto bg-yellow-500 text-blue-950 px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-400 transition shadow-lg hover:scale-105 transform duration-200"
             >
-                Check Availability
+                {t.ctaPrimary}
             </a>
             <a
                 href="https://www.airbnb.mx/rooms/42641671"
                 target="_blank"
                 class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/20 backdrop-blur-sm border border-white/50 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/30 transition"
             >
-                View on Airbnb
+                {t.ctaSecondary}
             </a>
         </div>
     </div>
@@ -66,25 +97,25 @@ import { MessageCircle, Star } from "lucide-react";
             <div class="text-center">
                 <span class="block text-2xl font-bold">16+</span>
                 <span class="text-xs uppercase tracking-widest opacity-80"
-                    >Guests</span
+                    >{t.guests}</span
                 >
             </div>
             <div class="text-center">
                 <span class="block text-2xl font-bold">4</span>
                 <span class="text-xs uppercase tracking-widest opacity-80"
-                    >Bedrooms</span
+                    >{t.bedrooms}</span
                 >
             </div>
             <div class="text-center">
                 <span class="block text-2xl font-bold">1,250m²</span>
                 <span class="text-xs uppercase tracking-widest opacity-80"
-                    >Property</span
+                    >{t.property}</span
                 >
             </div>
             <div class="text-center">
                 <span class="block text-2xl font-bold">5 min</span>
                 <span class="text-xs uppercase tracking-widest opacity-80"
-                    >To Beach</span
+                    >{t.beach}</span
                 >
             </div>
         </div>

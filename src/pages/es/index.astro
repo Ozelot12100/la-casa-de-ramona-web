@@ -1,0 +1,323 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Hero from "../../components/Hero.astro";
+import Gallery from "../../components/Gallery.astro";
+import Reviews from "../../components/Reviews.astro";
+import Footer from "../../components/Footer.astro";
+import WhatsAppBtn from "../../components/WhatsAppBtn.astro";
+import ContactForm from "../../components/ContactForm.astro";
+
+import {
+    BedDouble,
+    Armchair,
+    Waves,
+    ChefHat,
+    Anchor,
+    Dog,
+    Flame,
+    ShieldCheck,
+    MapPin,
+} from "lucide-react";
+---
+
+<Layout
+    title="La Casa de Ramona | Alberca Privada y Cochera Grande en Puerto Peñasco"
+    lang="es"
+>
+    <Navbar lang="es" />
+
+    <main>
+        <Hero lang="es" />
+
+        <section id="house" class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-4xl font-bold text-blue-900 mb-4"
+                    >
+                        Espacio para Todos (16+ Huéspedes)
+                    </h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto text-lg">
+                        Sin amontonarse. Camas reales, privacidad y habitaciones
+                        climatizadas (A/C) para todo tu grupo. Casa de una sola
+                        planta, accesible para adultos mayores.
+                    </p>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                    <div
+                        class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100"
+                    >
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Habitación 1
+                        </h3>
+                        <p class="text-slate-500 text-sm mb-4">
+                            Ideal para amigos
+                        </p>
+                        <ul class="space-y-3 text-slate-700 font-medium">
+                            <li class="flex items-center gap-2">
+                                <BedDouble size={20} class="text-blue-500" /> 2 Camas
+                                Matrimoniales
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div
+                        class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100"
+                    >
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Habitación 2
+                        </h3>
+                        <p class="text-slate-500 text-sm mb-4">
+                            Configuración familiar
+                        </p>
+                        <ul class="space-y-3 text-slate-700 font-medium">
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">👑</span> 1 Cama King
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <Armchair size={20} class="text-blue-500" /> 1 Sofá
+                                Cama
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div
+                        class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden"
+                    >
+                        <div
+                            class="absolute top-0 right-0 bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-bl-lg"
+                        >
+                            MASTER
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Habitación 3
+                        </h3>
+                        <p class="text-slate-500 text-sm mb-4">
+                            Master Suite Principal
+                        </p>
+                        <ul class="space-y-3 text-slate-700 font-medium">
+                            <li class="flex items-center gap-2">
+                                <span class="text-xl">👑</span> 1 Cama King
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div
+                        class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden"
+                    >
+                        <div
+                            class="absolute top-0 right-0 bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-bl-lg"
+                        >
+                            MASTER 2
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Habitación 4
+                        </h3>
+                        <p class="text-slate-500 text-sm mb-4">
+                            Segunda Master
+                        </p>
+                        <ul class="space-y-3 text-slate-700 font-medium">
+                            <li class="flex items-center gap-2">
+                                <BedDouble size={20} class="text-blue-500" /> 2 Camas
+                                Matrimoniales
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div
+                        class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 md:col-span-2 lg:col-span-2 bg-gradient-to-br from-white to-blue-50/50"
+                    >
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            Área Común Versátil
+                        </h3>
+                        <p class="text-slate-500 text-sm mb-4">
+                            Para los jóvenes o visitas extra
+                        </p>
+                        <div
+                            class="grid grid-cols-2 gap-4 text-slate-700 font-medium"
+                        >
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-2">
+                                    <Armchair size={20} class="text-blue-500" /> 2
+                                    Sofás Grandes
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    💨 1 Colchón Inflable
+                                </li>
+                            </ul>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-2">
+                                    🛌 5 Colchones de suelo
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    ❄️ Full Aire Acondicionado
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <Gallery />
+
+        <section id="amenities" class="py-24 max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="lg:w-1/2">
+                    <span
+                        class="text-blue-600 font-bold uppercase tracking-wider text-sm"
+                        >Más que una renta</span
+                    >
+                    <h2
+                        class="text-4xl md:text-5xl font-bold text-slate-900 mt-3 mb-6 leading-tight"
+                    >
+                        Amenidades de Resort,<br />Experiencia Privada.
+                    </h2>
+                    <p class="text-slate-600 text-lg mb-8 leading-relaxed">
+                        Disfruta la libertad de 1,250 m² privados. Cocina tu
+                        pesca del día en el asador mientras los niños juegan en
+                        la alberca. Segura, privada y solo tuya.
+                    </p>
+
+                    <div class="space-y-8">
+                        <div class="flex gap-5">
+                            <div
+                                class="bg-blue-50 p-3 rounded-xl text-blue-600 h-fit shadow-sm"
+                            >
+                                <ChefHat size={28} />
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">
+                                    Cocina de Chef y Desayuno
+                                </h4>
+                                <p class="text-slate-600 mt-1">
+                                    Cocina totalmente equipada. <span
+                                        class="text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded"
+                                        >¡Desayuno continental incluido</span
+                                    > en tu primera mañana!
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-5">
+                            <div
+                                class="bg-blue-50 p-3 rounded-xl text-blue-600 h-fit shadow-sm"
+                            >
+                                <Anchor size={28} />
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">
+                                    Estacionamiento Botes y RZRs
+                                </h4>
+                                <p class="text-slate-600 mt-1">
+                                    Enorme tejabán para 4 autos + patio gigante
+                                    para tus juguetes (Botes, RZRs, RVs).
+                                    Totalmente bardeado.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-5">
+                            <div
+                                class="bg-blue-50 p-3 rounded-xl text-blue-600 h-fit shadow-sm"
+                            >
+                                <Dog size={28} />
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">
+                                    Pet Friendly
+                                </h4>
+                                <p class="text-slate-600 mt-1">
+                                    Tus mascotas son parte de la familia y son
+                                    bienvenidas aquí.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-5">
+                            <div
+                                class="bg-blue-50 p-3 rounded-xl text-blue-600 h-fit shadow-sm"
+                            >
+                                <Flame size={28} />
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">
+                                    Vida Exterior
+                                </h4>
+                                <p class="text-slate-600 mt-1">
+                                    Alberca privada 24/7, Área de asador,
+                                    fogatero para las noches y comedor al aire
+                                    libre.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 relative">
+                    <div
+                        class="absolute -top-6 -left-6 w-32 h-32 bg-yellow-100 rounded-full z-0 opacity-50"
+                    >
+                    </div>
+                    <div
+                        class="absolute -bottom-6 -right-6 w-40 h-40 bg-blue-100 rounded-full z-0 opacity-50"
+                    >
+                    </div>
+                    <img
+                        src="/images/galeria-patio-asador.jpg"
+                        alt="Patio y Asador en Casa de Ramona"
+                        class="rounded-3xl shadow-2xl relative z-10 w-full transform hover:scale-[1.01] transition duration-500 object-cover h-[500px]"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <Reviews lang="es" />
+
+        <section id="location" class="py-20 bg-slate-900 text-white">
+            <div class="max-w-7xl mx-auto px-6 text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Ubicación Privilegiada</h2>
+                <p class="text-blue-200 max-w-2xl mx-auto">
+                    En el corazón de Puerto Peñasco. Segura, accesible y cerca
+                    de todo.
+                </p>
+            </div>
+
+            <div
+                class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
+            >
+                <div
+                    class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700"
+                >
+                    <div class="text-4xl mb-4">🏖️</div>
+                    <h3 class="font-bold text-lg mb-2">5 Min</h3>
+                    <p class="text-slate-400">A Playa Sandy Beach</p>
+                </div>
+                <div
+                    class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700"
+                >
+                    <div class="text-4xl mb-4">🏙️</div>
+                    <h3 class="font-bold text-lg mb-2">5 Min</h3>
+                    <p class="text-slate-400">Al Malecón</p>
+                </div>
+                <div
+                    class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700"
+                >
+                    <div class="text-4xl mb-4">🛒</div>
+                    <h3 class="font-bold text-lg mb-2">3 Min</h3>
+                    <p class="text-slate-400">
+                        A Supermercados (Sam's, Aurrera)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <ContactForm lang="es" />
+        <Footer lang="es" />
+        <WhatsAppBtn />
+    </main>
+</Layout>

@@ -4,16 +4,19 @@ import "../styles/global.css";
 interface Props {
 	title: string;
 	description?: string;
+	lang?: string; // Nueva propiedad opcional
 }
 
+// Si no nos pasan el idioma, asumimos inglés ('en')
 const {
 	title,
-	description = "La Casa de Ramona - Vacation Rental in Puerto Peñasco (Rocky Point), Mexico. Private pool, secure parking, and room for 16+ guests.",
+	description = "La Casa de Ramona - Vacation Rental in Puerto Peñasco. Private pool, secure parking.",
+	lang = "en",
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />

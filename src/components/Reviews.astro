@@ -1,27 +1,52 @@
 ---
 import { Star, Quote } from "lucide-react";
 
-// Aquí simulamos las reseñas. Luego puedes copiar y pegar las reales de Airbnb.
+interface Props {
+    lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props;
+
+// Textos de la Interfaz
+const t = {
+    en: {
+        title: "Guest Favorite",
+        subtitle:
+            "Rated 4.99/5 stars on Airbnb based on 100+ reviews. Here is what our guests are saying.",
+        link: "Read all 100+ reviews on Airbnb →",
+    },
+    es: {
+        title: "Favorito de los Huéspedes",
+        subtitle:
+            "Calificación de 4.99/5 estrellas en Airbnb con +100 reseñas. Esto dicen quienes nos visitan.",
+        link: "Leer las +100 reseñas en Airbnb →",
+    },
+};
+
+const text = t[lang];
+
+// Nota: Las reseñas individuales se quedan fijas por ser testimonios,
+// pero podrías crear dos arrays (reviewsEn y reviewsEs) si quisieras traducirlas también.
 const reviews = [
     {
         name: "Sarah Jenkins",
         location: "Phoenix, AZ",
         date: "November 2024",
-        text: "This house was absolutely perfect for our family reunion! The pool was clean and warm, and the kids loved it. We felt super secure with the gated parking for our trucks. Ramona was an excellent host.",
+        text: "This house was absolutely perfect for our family reunion! The pool was clean and warm, and the kids loved it. We felt super secure with the gated parking for our trucks.",
         rating: 5,
     },
     {
         name: "Michael Torres",
         location: "Tucson, AZ",
         date: "October 2024",
-        text: "The best place to stay in Rocky Point for large groups. Plenty of beds, A/C worked great (which is rare), and the kitchen had everything we needed. The location is super close to the Malecon.",
+        text: "The best place to stay in Rocky Point for large groups. Plenty of beds, A/C worked great (which is rare), and the kitchen had everything we needed.",
         rating: 5,
     },
     {
         name: "Jessica & Tom",
         location: "California",
         date: "September 2024",
-        text: "We brought our ATVs and the parking situation was a dream. The house is huge and spotless. We loved the breakfast on the first day, such a nice touch! Will definitely book again.",
+        text: "We brought our ATVs and the parking situation was a dream. The house is huge and spotless. We loved the breakfast on the first day, such a nice touch!",
         rating: 5,
     },
 ];
@@ -36,16 +61,18 @@ const reviews = [
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="text-center mb-16">
             <div class="flex items-center justify-center gap-2 mb-4">
-                <Star class="text-yellow-400 fill-yellow-400" size={32} />
-                <Star class="text-yellow-400 fill-yellow-400" size={32} />
-                <Star class="text-yellow-400 fill-yellow-400" size={32} />
-                <Star class="text-yellow-400 fill-yellow-400" size={32} />
-                <Star class="text-yellow-400 fill-yellow-400" size={32} />
+                {
+                    [...Array(5)].map(() => (
+                        <Star
+                            class="text-yellow-400 fill-yellow-400"
+                            size={32}
+                        />
+                    ))
+                }
             </div>
-            <h2 class="text-4xl font-bold text-white mb-4">Guest Favorite</h2>
+            <h2 class="text-4xl font-bold text-white mb-4">{text.title}</h2>
             <p class="text-blue-200 text-lg max-w-2xl mx-auto">
-                Rated <span class="font-bold text-white">4.99/5 stars</span> on Airbnb
-                based on 100+ reviews. Here is what our guests are saying.
+                {text.subtitle}
             </p>
         </div>
 
@@ -57,17 +84,14 @@ const reviews = [
                             class="absolute top-6 right-6 text-blue-100"
                             size={48}
                         />
-
                         <div class="flex items-center gap-1 mb-4 text-yellow-500">
                             {[...Array(review.rating)].map(() => (
                                 <Star size={18} fill="currentColor" />
                             ))}
                         </div>
-
                         <p class="text-slate-600 mb-6 italic leading-relaxed">
                             "{review.text}"
                         </p>
-
                         <div class="flex items-center gap-4 mt-auto border-t border-slate-100 pt-4">
                             <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">
                                 {review.name.charAt(0)}
@@ -92,7 +116,7 @@ const reviews = [
                 target="_blank"
                 class="inline-flex items-center gap-2 text-white border-b border-white/30 pb-1 hover:text-yellow-400 hover:border-yellow-400 transition"
             >
-                Read all 100+ reviews on Airbnb →
+                {text.link}
             </a>
         </div>
     </div>

@@ -1,5 +1,28 @@
 ---
 import { Facebook, Instagram, Mail, MapPin } from "lucide-react";
+
+interface Props {
+    lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props;
+
+const t = {
+    en: {
+        desc: "Your authentic Mexican getaway. Experience privacy, security, and comfort in the heart of Puerto Peñasco.",
+        links: "Quick Links",
+        contact: "Contact Info",
+        rights: "All rights reserved.",
+    },
+    es: {
+        desc: "Tu auténtica escapada mexicana. Vive la privacidad, seguridad y confort en el corazón de Puerto Peñasco.",
+        links: "Enlaces Rápidos",
+        contact: "Contacto",
+        rights: "Todos los derechos reservados.",
+    },
+};
+
+const text = t[lang];
 ---
 
 <footer
@@ -10,10 +33,7 @@ import { Facebook, Instagram, Mail, MapPin } from "lucide-react";
             <h3 class="text-white font-bold text-2xl mb-4">
                 La Casa de Ramona
             </h3>
-            <p class="text-slate-400 mb-6 leading-relaxed">
-                Your authentic Mexican getaway. Experience privacy, security,
-                and comfort in the heart of Puerto Peñasco.
-            </p>
+            <p class="text-slate-400 mb-6 leading-relaxed">{text.desc}</p>
             <div class="flex gap-4">
                 <a href="#" class="hover:text-white transition"
                     ><Facebook size={24} /></a
@@ -25,32 +45,31 @@ import { Facebook, Instagram, Mail, MapPin } from "lucide-react";
         </div>
 
         <div>
-            <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
+            <h4 class="text-white font-bold text-lg mb-4">{text.links}</h4>
             <ul class="space-y-3">
                 <li>
                     <a href="#house" class="hover:text-blue-400 transition"
-                        >The House Layout</a>
+                        >{lang === "es" ? "La Casa" : "The House Layout"}</a>
                 </li>
                 <li>
                     <a href="#amenities" class="hover:text-blue-400 transition"
-                        >Amenities</a>
+                        >{lang === "es" ? "Amenidades" : "Amenities"}</a>
                 </li>
                 <li>
                     <a
                         href="https://www.airbnb.mx/rooms/42641671"
                         target="_blank"
-                        class="hover:text-blue-400 transition"
-                        >Airbnb Listing</a>
+                        class="hover:text-blue-400 transition">Airbnb</a>
                 </li>
                 <li>
                     <a href="#contact" class="hover:text-blue-400 transition"
-                        >Contact Us</a>
+                        >{lang === "es" ? "Contacto" : "Contact Us"}</a>
                 </li>
             </ul>
         </div>
 
-        <div id="contact">
-            <h4 class="text-white font-bold text-lg mb-4">Contact Info</h4>
+        <div id="contact-footer">
+            <h4 class="text-white font-bold text-lg mb-4">{text.contact}</h4>
             <ul class="space-y-4">
                 <li class="flex items-start gap-3">
                     <MapPin class="text-blue-500 mt-1" size={20} />
@@ -74,6 +93,6 @@ import { Facebook, Instagram, Mail, MapPin } from "lucide-react";
     <div
         class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-800 text-center text-sm text-slate-500"
     >
-        © {new Date().getFullYear()} La Casa de Ramona. All rights reserved.
+        © {new Date().getFullYear()} La Casa de Ramona. {text.rights}
     </div>
 </footer>

@@ -1,5 +1,39 @@
 ---
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
+
+interface Props {
+    lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props;
+
+// Diccionario de Traducciones
+const t = {
+    en: {
+        house: "The House",
+        amenities: "Amenities",
+        location: "Location",
+        reviews: "Reviews",
+        book: "Book Direct",
+        // Si estoy en inglés, el botón me invita a ir a Español
+        switchLabel: "ES",
+        switchFlag: "🇲🇽",
+        switchLink: "/es",
+    },
+    es: {
+        house: "La Casa",
+        amenities: "Amenidades",
+        location: "Ubicación",
+        reviews: "Reseñas",
+        book: "Reservar",
+        // Si estoy en español, el botón me invita a ir a Inglés
+        switchLabel: "EN",
+        switchFlag: "🇺🇸",
+        switchLink: "/",
+    },
+};
+
+const text = t[lang];
 ---
 
 <nav
@@ -8,7 +42,10 @@ import { Menu, X } from "lucide-react";
     <div
         class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between"
     >
-        <a href="/" class="flex items-center gap-2 group">
+        <a
+            href={lang === "en" ? "/" : "/es"}
+            class="flex items-center gap-2 group"
+        >
             <div
                 class="text-2xl font-bold text-blue-900 tracking-tight group-hover:text-blue-700 transition"
             >
@@ -19,26 +56,43 @@ import { Menu, X } from "lucide-react";
         <div
             class="hidden md:flex items-center gap-8 font-medium text-slate-600 text-sm uppercase tracking-wide"
         >
-            <a href="#house" class="hover:text-blue-600 transition">The House</a
+            <a href="#house" class="hover:text-blue-600 transition"
+                >{text.house}</a
             >
             <a href="#amenities" class="hover:text-blue-600 transition"
-                >Amenities</a
+                >{text.amenities}</a
             >
             <a href="#location" class="hover:text-blue-600 transition"
-                >Location</a
+                >{text.location}</a
             >
-            <a href="#reviews" class="hover:text-blue-600 transition">Reviews</a
+            <a href="#reviews" class="hover:text-blue-600 transition"
+                >{text.reviews}</a
             >
+
+            <a
+                href={text.switchLink}
+                class="flex items-center gap-2 text-slate-600 hover:text-blue-900 transition border border-slate-200 rounded-full px-4 py-1.5 hover:bg-slate-50"
+            >
+                <span class="text-lg leading-none">{text.switchFlag}</span>
+                <span class="font-bold text-xs">{text.switchLabel}</span>
+            </a>
 
             <a
                 href="#contact"
                 class="bg-blue-900 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-blue-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
-                Book Direct
+                {text.book}
             </a>
         </div>
 
-        <div class="md:hidden text-slate-600">
+        <div class="md:hidden text-slate-600 flex items-center gap-4">
+            <a
+                href={text.switchLink}
+                class="flex items-center gap-1 font-bold text-sm text-slate-500 border border-slate-200 px-3 py-1 rounded-full"
+            >
+                <span>{text.switchFlag}</span>
+                <span>{text.switchLabel}</span>
+            </a>
             <Menu size={28} />
         </div>
     </div>
