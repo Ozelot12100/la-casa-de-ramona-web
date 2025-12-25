@@ -1,5 +1,28 @@
 ---
 import { Image } from "lucide-react";
+
+interface Props {
+    lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props;
+
+const t = {
+    en: {
+        badge: "Visual Tour",
+        title: "See Inside La Casa de Ramona",
+        btn: "View all photos on Airbnb",
+        imgLabel: "BBQ Area",
+    },
+    es: {
+        badge: "Recorrido Visual",
+        title: "Mira el interior de La Casa de Ramona",
+        btn: "Ver todas las fotos en Airbnb",
+        imgLabel: "Área de Asador",
+    },
+};
+
+const text = t[lang];
 ---
 
 <section id="gallery" class="py-20 bg-white">
@@ -10,10 +33,10 @@ import { Image } from "lucide-react";
             <div>
                 <span
                     class="text-blue-600 font-bold uppercase tracking-wider text-sm"
-                    >Visual Tour</span
+                    >{text.badge}</span
                 >
                 <h2 class="text-4xl font-bold text-slate-900 mt-2">
-                    See Inside La Casa de Ramona
+                    {text.title}
                 </h2>
             </div>
             <a
@@ -21,7 +44,8 @@ import { Image } from "lucide-react";
                 target="_blank"
                 class="flex items-center gap-2 text-slate-600 font-medium hover:text-blue-600 transition"
             >
-                <Image size={20} /> View all photos on Airbnb
+                <Image size={20} />
+                {text.btn}
             </a>
         </div>
 
@@ -39,9 +63,7 @@ import { Image } from "lucide-react";
                 <div
                     class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6"
                 >
-                    <p class="text-white font-bold text-lg">
-                        Private Pool & Patio
-                    </p>
+                    <p class="text-white font-bold text-lg">{text.imgLabel}</p>
                 </div>
             </div>
 
