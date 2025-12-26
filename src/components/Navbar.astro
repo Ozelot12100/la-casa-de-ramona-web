@@ -1,5 +1,5 @@
 ---
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react"; // Importamos X para el icono de cerrar si quisieras, o reusamos Menu
 
 interface Props {
     lang?: "en" | "es";
@@ -11,7 +11,7 @@ const { lang = "en" } = Astro.props;
 const t = {
     en: {
         house: "The House",
-        gallery: "Gallery", // Nuevo elemento
+        gallery: "Gallery",
         amenities: "Amenities",
         reviews: "Reviews",
         location: "Location",
@@ -22,7 +22,7 @@ const t = {
     },
     es: {
         house: "La Casa",
-        gallery: "Galería", // Nuevo elemento
+        gallery: "Galería",
         amenities: "Amenidades",
         reviews: "Reseñas",
         location: "Ubicación",
@@ -53,43 +53,35 @@ const text = t[lang];
             </div>
         </a>
 
+        {/* MENÚ DE ESCRITORIO (Visible en md+) */}
         <div
             class="hidden md:flex items-center gap-6 lg:gap-8 font-medium text-slate-600 text-sm uppercase tracking-wide"
         >
             <a
                 href="#house"
                 class="nav-link hover:text-blue-600 transition border-b-2 border-transparent py-1"
+                >{text.house}</a
             >
-                {text.house}
-            </a>
-
             <a
                 href="#gallery"
                 class="nav-link hover:text-blue-600 transition border-b-2 border-transparent py-1"
+                >{text.gallery}</a
             >
-                {text.gallery}
-            </a>
-
             <a
                 href="#amenities"
                 class="nav-link hover:text-blue-600 transition border-b-2 border-transparent py-1"
+                >{text.amenities}</a
             >
-                {text.amenities}
-            </a>
-
             <a
                 href="#reviews"
                 class="nav-link hover:text-blue-600 transition border-b-2 border-transparent py-1"
+                >{text.reviews}</a
             >
-                {text.reviews}
-            </a>
-
             <a
                 href="#location"
                 class="nav-link hover:text-blue-600 transition border-b-2 border-transparent py-1"
+                >{text.location}</a
             >
-                {text.location}
-            </a>
 
             <a
                 href={text.switchLink}
@@ -107,6 +99,7 @@ const text = t[lang];
             </a>
         </div>
 
+        {/* CONTROLES MÓVIL (Visible solo en celular) */}
         <div class="md:hidden text-slate-600 flex items-center gap-4">
             <a
                 href={text.switchLink}
@@ -115,31 +108,92 @@ const text = t[lang];
                 <span>{text.switchFlag}</span>
                 <span>{text.switchLabel}</span>
             </a>
-            <Menu size={28} />
+
+            {/* Botón Hamburguesa */}
+            <button id="menu-btn" aria-label="Menu" class="focus:outline-none">
+                <Menu size={28} />
+            </button>
         </div>
+    </div>
+
+    {/* MENÚ MÓVIL DESPLEGABLE (Agregado) */}
+    <div
+        id="mobile-menu"
+        class="hidden absolute top-20 left-0 w-full bg-white border-b border-slate-200 shadow-xl flex-col p-6 gap-4 md:hidden"
+    >
+        <a
+            href="#house"
+            class="mobile-nav-link text-lg font-medium text-slate-600 py-2 border-b border-slate-100"
+            >{text.house}</a
+        >
+        <a
+            href="#gallery"
+            class="mobile-nav-link text-lg font-medium text-slate-600 py-2 border-b border-slate-100"
+            >{text.gallery}</a
+        >
+        <a
+            href="#amenities"
+            class="mobile-nav-link text-lg font-medium text-slate-600 py-2 border-b border-slate-100"
+            >{text.amenities}</a
+        >
+        <a
+            href="#reviews"
+            class="mobile-nav-link text-lg font-medium text-slate-600 py-2 border-b border-slate-100"
+            >{text.reviews}</a
+        >
+        <a
+            href="#location"
+            class="mobile-nav-link text-lg font-medium text-slate-600 py-2 border-b border-slate-100"
+            >{text.location}</a
+        >
+        <a
+            href="#contact"
+            class="mobile-nav-link mt-2 bg-blue-900 text-white text-center py-3 rounded-xl font-bold text-lg shadow-md"
+        >
+            {text.book}
+        </a>
     </div>
 </nav>
 
 <script>
     /**
-     * SCROLL SPY (Marcador de Sección Activa)
-     * Detecta qué sección está visible y marca el enlace correspondiente.
+     * LOGICA DEL MENÚ MÓVIL
      */
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileLinks = document.querySelectorAll(".mobile-nav-link");
 
-    // Seleccionamos todas las secciones que tienen ID y que coinciden con nuestros enlaces
+    if (menuBtn && mobileMenu) {
+        // Abrir/Cerrar al tocar el botón
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+            mobileMenu.classList.toggle("flex");
+        });
+
+        // Cerrar menú al tocar cualquier enlace
+        mobileLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+                mobileMenu.classList.remove("flex");
+            });
+        });
+    }
+
+    /**
+     * SCROLL SPY (Tu código original)
+     */
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-link");
 
     const observerOptions = {
         root: null,
         rootMargin: "0px",
-        threshold: 0.25, // Se activa cuando el 25% de la sección es visible
+        threshold: 0.25,
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                // 1. Resetear estilos
                 navLinks.forEach((link) => {
                     link.classList.remove(
                         "text-blue-900",
@@ -149,7 +203,6 @@ const text = t[lang];
                     link.classList.add("text-slate-600", "border-transparent");
                 });
 
-                // 2. Activar el enlace correcto
                 const activeId = entry.target.getAttribute("id");
                 const activeLink = document.querySelector(
                     `.nav-link[href="#${activeId}"]`,
