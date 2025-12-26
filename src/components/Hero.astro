@@ -33,13 +33,10 @@ const content = {
         beach: "A la Playa",
     },
 };
-
 const t = content[lang];
 ---
 
-<section
-    class="relative h-[85vh] w-full flex items-center justify-center overflow-hidden"
->
+<section class="relative h-[85vh] w-full flex items-center overflow-hidden">
     <div class="absolute inset-0 z-0">
         <img
             src="/images/hero-fachada.jpg"
@@ -49,7 +46,7 @@ const t = content[lang];
     </div>
 
     <div
-        class="relative z-10 text-center text-white px-4 mt-10 max-w-5xl mx-auto"
+        class="relative z-30 text-left text-white px-6 mt-10 max-w-4xl mr-auto md:ml-12"
     >
         <div
             class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-yellow-400 font-bold text-sm uppercase tracking-wider mb-6 animate-fade-in-up"
@@ -64,13 +61,11 @@ const t = content[lang];
         />
 
         <p
-            class="text-lg md:text-2xl mb-10 max-w-3xl mx-auto font-light text-blue-50 drop-shadow-md"
+            class="text-lg md:text-2xl mb-10 max-w-2xl font-light text-blue-50 drop-shadow-md"
             set:html={t.subtitle}
         />
 
-        <div
-            class="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
+        <div class="flex flex-col sm:flex-row gap-4 justify-start items-center">
             <a
                 href="#contact"
                 class="w-full sm:w-auto bg-yellow-500 text-blue-950 px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-400 transition shadow-lg hover:scale-105 transform duration-200"
@@ -91,7 +86,7 @@ const t = content[lang];
         class="absolute bottom-0 w-full bg-gradient-to-t from-slate-900/90 to-transparent pt-20 pb-8 z-10"
     >
         <div
-            class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-8 md:gap-16 text-white/90"
+            class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center md:justify-end gap-8 md:gap-16 text-white/90"
         >
             <div class="text-center">
                 <span class="block text-2xl font-bold">16+</span>

@@ -11,32 +11,32 @@ const { lang = "en" } = Astro.props;
 const t = {
     en: {
         house: "The House",
+        gallery: "Gallery", // Nuevo elemento
         amenities: "Amenities",
-        location: "Location",
         reviews: "Reviews",
+        location: "Location",
         book: "Book Direct",
-        // Si estoy en inglés, el botón me invita a ir a Español
         switchLabel: "ES",
         switchFlag: "🇲🇽",
         switchLink: "/es",
     },
     es: {
         house: "La Casa",
+        gallery: "Galería", // Nuevo elemento
         amenities: "Amenidades",
-        location: "Ubicación",
         reviews: "Reseñas",
+        location: "Ubicación",
         book: "Reservar",
-        // Si estoy en español, el botón me invita a ir a Inglés
         switchLabel: "EN",
         switchFlag: "🇺🇸",
         switchLink: "/",
     },
 };
-
 const text = t[lang];
 ---
 
 <nav
+    id="navbar"
     class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all h-20"
 >
     <div
@@ -54,24 +54,46 @@ const text = t[lang];
         </a>
 
         <div
-            class="hidden md:flex items-center gap-8 font-medium text-slate-600 text-sm uppercase tracking-wide"
+            class="hidden md:flex items-center gap-6 lg:gap-8 font-medium text-slate-600 text-sm uppercase tracking-wide"
         >
-            <a href="#house" class="hover:text-blue-600 transition"
-                >{text.house}</a
+            <a
+                href="#house"
+                class="nav-link hover:text-blue-600 transition border-b-2 border-transparent py-1"
             >
-            <a href="#amenities" class="hover:text-blue-600 transition"
-                >{text.amenities}</a
+                {text.house}
+            </a>
+
+            <a
+                href="#gallery"
+                class="nav-link hover:text-blue-600 transition border-b-2 border-transparent py-1"
             >
-            <a href="#location" class="hover:text-blue-600 transition"
-                >{text.location}</a
+                {text.gallery}
+            </a>
+
+            <a
+                href="#amenities"
+                class="nav-link hover:text-blue-600 transition border-b-2 border-transparent py-1"
             >
-            <a href="#reviews" class="hover:text-blue-600 transition"
-                >{text.reviews}</a
+                {text.amenities}
+            </a>
+
+            <a
+                href="#reviews"
+                class="nav-link hover:text-blue-600 transition border-b-2 border-transparent py-1"
             >
+                {text.reviews}
+            </a>
+
+            <a
+                href="#location"
+                class="nav-link hover:text-blue-600 transition border-b-2 border-transparent py-1"
+            >
+                {text.location}
+            </a>
 
             <a
                 href={text.switchLink}
-                class="flex items-center gap-2 text-slate-600 hover:text-blue-900 transition border border-slate-200 rounded-full px-4 py-1.5 hover:bg-slate-50"
+                class="flex items-center gap-2 text-slate-600 hover:text-blue-900 transition border border-slate-200 rounded-full px-3 py-1.5 hover:bg-slate-50 ml-2"
             >
                 <span class="text-lg leading-none">{text.switchFlag}</span>
                 <span class="font-bold text-xs">{text.switchLabel}</span>
@@ -97,3 +119,58 @@ const text = t[lang];
         </div>
     </div>
 </nav>
+
+<script>
+    /**
+     * SCROLL SPY (Marcador de Sección Activa)
+     * Detecta qué sección está visible y marca el enlace correspondiente.
+     */
+
+    // Seleccionamos todas las secciones que tienen ID y que coinciden con nuestros enlaces
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.25, // Se activa cuando el 25% de la sección es visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // 1. Resetear estilos
+                navLinks.forEach((link) => {
+                    link.classList.remove(
+                        "text-blue-900",
+                        "font-bold",
+                        "border-blue-900",
+                    );
+                    link.classList.add("text-slate-600", "border-transparent");
+                });
+
+                // 2. Activar el enlace correcto
+                const activeId = entry.target.getAttribute("id");
+                const activeLink = document.querySelector(
+                    `.nav-link[href="#${activeId}"]`,
+                );
+
+                if (activeLink) {
+                    activeLink.classList.remove(
+                        "text-slate-600",
+                        "border-transparent",
+                    );
+                    activeLink.classList.add(
+                        "text-blue-900",
+                        "font-bold",
+                        "border-blue-900",
+                    );
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+        observer.observe(section);
+    });
+</script>
